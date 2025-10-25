@@ -9,6 +9,7 @@ export interface Security {
   effectiveness: number;
   status: string;
   implemented_by_name?: string;
+  implemented_by: number;
   created_at: string;
 }
 
