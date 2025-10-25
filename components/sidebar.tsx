@@ -2,14 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, AlertTriangle, Wrench, Activity, LogOut } from "lucide-react";
+import {
+  Shield,
+  AlertTriangle,
+  Wrench,
+  Activity,
+  LogOut,
+  ServerCrash,
+} from "lucide-react";
 import { useAuth } from "@/store/auth";
 
 const menuItems = [
+  { name: "Activos", icon: Activity, href: "/dashboard/assets" },
   { name: "Riesgos", icon: AlertTriangle, href: "/dashboard/risk" },
   { name: "Seguridad", icon: Shield, href: "/dashboard/security" },
   { name: "Mitigación", icon: Wrench, href: "/dashboard/mitigation" },
-  { name: "Incidentes", icon: Activity, href: "/dashboard/incident" },
+  { name: "Incidentes", icon: ServerCrash, href: "/dashboard/incident" },
 ];
 
 export default function Sidebar() {
@@ -19,7 +27,9 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-white border-r shadow-sm h-screen p-4 flex flex-col justify-between">
       <div>
-        <h1 className="text-2xl font-bold mb-6 text-blue-600">DMSecurity</h1>
+        <Link href={"/dashboard"}>
+          <h1 className="text-2xl font-bold mb-6 text-blue-600">DMSecurity</h1>
+        </Link>
         <nav className="space-y-2">
           {menuItems.map((item) => {
             const active = pathname.startsWith(item.href);
