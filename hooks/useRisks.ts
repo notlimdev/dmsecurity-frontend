@@ -11,6 +11,7 @@ export interface Risk {
   risk_level_name: string;
   status: string;
   identified_by_name?: string;
+  identified_by?: number;
   created_at: string;
 }
 
