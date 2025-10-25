@@ -33,5 +33,11 @@ export function useRisks() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["risks"] }),
   });
 
-  return { ...risksQuery, addRisk };
+  const generateMitigations = useMutation({
+    mutationFn: async (riskId: number) => {
+      const res = await api.post(`/risk/risks/${riskId}/generate-mitigations/`);
+      return res.data;
+    },
+  });
+  return { ...risksQuery, addRisk, generateMitigations };
 }
